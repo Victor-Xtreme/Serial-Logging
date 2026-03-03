@@ -13,7 +13,13 @@ const char* url = "http://192.168.xxx.xxx";
 // put function declarations here:
 void postdata() {
 
-  if (WiFi.status() != WL_CONNECTED) return;
+  if (WiFi.status() != WL_CONNECTED) {
+    Serial.print("Disconnected, Retrying\n");
+    while (WiFi.status() != WL_CONNECTED) {
+      delay(500);
+      Serial.print(".");
+    }
+  }
 
   HTTPClient http;
 
