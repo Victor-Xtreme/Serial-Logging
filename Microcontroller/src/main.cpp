@@ -8,7 +8,7 @@ DHTesp dht;
 
 const char* ssid = "xyz";
 const char* password = "xyz";
-const char* url = "http://192.168.xxx.xxx";
+const char* url = "172.21.48.219:3000";
 
 // put function declarations here:
 void postdata() {
@@ -33,6 +33,7 @@ void postdata() {
 
   if (isnan(temp) || isnan(humd)) {
     Serial.println("Sensor read failed");
+    http.end();
     return;
   }
   String json = "{";
